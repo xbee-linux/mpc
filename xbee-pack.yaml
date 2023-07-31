@@ -8,7 +8,7 @@ description: |
   Installed Directory: /usr/share/doc/mpc-1.2.1
   Short Descriptions: libmpc Contains complex math functions
 
-in:
+var:
   version: 1.2.1
 
 dependencies:
@@ -18,17 +18,17 @@ dependencies:
 
 provision:
   - url:
-      from: https://ftp.gnu.org/gnu/mpc/mpc-{% version %}.tar.gz
-      todir: "{% xbeeSrc %}"
+      from: https://ftp.gnu.org/gnu/mpc/mpc-{{ .version }}.tar.gz
+      todir: "{{ .xbee.src }}"
 
 build:
   - shell:
       cmds:
-        - ./configure --prefix=/usr --disable-static --docdir=/usr/share/doc/mpc-{% version %}
+        - ./configure --prefix=/usr --disable-static --docdir=/usr/share/doc/mpc-{{ .version }}
         - make
         - make html
 #        - make check
-        - make install DESTDIR={% xbeeOut %}
-        - make install-html DESTDIR={% xbeeOut %}
-      directory: "{% xbeeSrc %}/mpc-{% version %}"
+        - make install DESTDIR={{ .xbee.out }}
+        - make install-html DESTDIR={{ .xbee.out }}
+      directory: "{{ .xbee.src }}/mpc-{{ .version }}"
 
