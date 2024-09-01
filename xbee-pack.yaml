@@ -9,7 +9,8 @@ description: |
   Short Descriptions: libmpc Contains complex math functions
 
 var:
-  version: 1.2.1
+  xbee:
+    version: 1.2.1
 
 builders:
   - gmp
@@ -17,16 +18,16 @@ builders:
   - texinfo
 
 provision:
-  url: https://ftp.gnu.org/gnu/mpc/mpc-{{ .version }}.tar.gz
+  url: https://ftp.gnu.org/gnu/mpc/mpc-{{ .xbee.version }}.tar.gz
 
 build:
   - shell:
       cmds:
-        - ./configure --prefix=/usr --disable-static --docdir=/usr/share/doc/mpc-{{ .version }}
+        - ./configure --prefix=/usr --disable-static --docdir=/usr/share/doc/mpc-{{ .xbee.version }}
         - make
         - make html
 #        - make check
         - make install DESTDIR={{ .xbee.out }}
         - make install-html DESTDIR={{ .xbee.out }}
-      directory: "{{ .xbee.src }}/mpc-{{ .version }}"
+      directory: "{{ .xbee.src }}/mpc-{{ .xbee.version }}"
 
