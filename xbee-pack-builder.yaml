@@ -1,7 +1,5 @@
 schema-version: 1.0
 
-type: builder
-
 description: |
   The MPC package contains a library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result.
   Installed Libraries: libmpc.so
@@ -12,7 +10,7 @@ var:
   xbee:
     version: 1.2.1
 
-builders:
+builder:
   - gmp
   - mpfr
   - texinfo
